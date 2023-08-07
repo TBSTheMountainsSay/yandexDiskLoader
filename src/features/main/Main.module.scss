@@ -1,0 +1,29 @@
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 1rem;
+  flex-direction: column;
+
+  .input{
+    font-size: 1rem;
+    background-color: var(--button);
+    color: var(--def);
+    font-weight: 700;
+    border-radius: 2rem;
+    padding: 0.75rem;
+  }
+
+  .inputDef{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
