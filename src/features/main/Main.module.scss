@@ -26,4 +26,14 @@
     flex-direction: row;
     gap: 1rem;
   }
+
+  .completed{
+    font-size: 1rem;
+
+    .title{
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--completed);
+    }
+  }
 }

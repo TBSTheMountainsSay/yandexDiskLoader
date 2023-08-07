@@ -12,6 +12,7 @@ const Main: React.FC<TMainProps> = ({}) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const {enqueueSnackbar} = useSnackbar();
     const [files, setFiles] = useState<File[]>([]);
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
 
     const handleAddFile=(event:React.ChangeEvent<HTMLInputElement>)=>{
         const count = event.target.files?.length ?? 0;
@@ -30,6 +31,7 @@ const Main: React.FC<TMainProps> = ({}) => {
       {
         const {data} = await yandexAPI.uploadFile(encodeURI(files[i].name))
         await yandexAPI.sendFile(String(data.href), files[i])
+        setUploadedFiles( prevFiles => [...prevFiles, files[i]])
       }
     }
 
@@ -40,6 +42,8 @@ const Main: React.FC<TMainProps> = ({}) => {
             <div className={styles.buttons}>
                 {<CustomButton buttonName={"Отправить"} disabled={!isActive} onClick={handleSend}/>}
             </div>
+          {uploadedFiles.map((uploadedFile) => <div key={uploadedFile.name} className={styles.completed}>
+            <span className={styles.title}>Файл загружен: </span>{uploadedFile.name}</div>)}
         </div>
     );
 };
